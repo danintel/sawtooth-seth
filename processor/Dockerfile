@@ -43,14 +43,6 @@ RUN (apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8AA7AF1F1
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN \
- if [ ! -z $http_proxy ]; then \
-  git config --global http.proxy $http_proxy; \
- fi; \
- if [ ! -z $https_proxy ]; then \
-  git config --global https.proxy $https_proxy; \
- fi
-
 RUN git config --global url."https://".insteadOf git://
 
 RUN go get -u \
